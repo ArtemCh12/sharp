@@ -1,0 +1,38 @@
+﻿@model Game.Models.Platform
+
+<form method="post" asp-action="Update">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Обновить платформу</h2>
+        </div>
+        <div class="col-6">
+            <label asp-for="PlatfromName"></label>
+            <input asp-for="PlatfromName" class="form-control" />
+            <span asp-validation-for="PlatfromName" class="text-danger"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="Tickrate"></label>
+            <input asp-for="Tickrate" class="form-control" />
+            <span asp-validation-for="Tickrate" class="text-danger"></span>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <input type="submit" class="btn btn-info w-75" value="Update" />
+                </div>
+                <div class="col">
+                    <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,73 @@
+﻿@model Game.Models.ViewModels.PlayerVM
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Добавить игрока</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Player.Nickname"></label>
+                        <input asp-for="Player.Nickname" class="form-control" />
+                        <span asp-validation-for="Player.Nickname" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Player.Name"></label>
+                        <input asp-for="Player.Name" class="form-control" />
+                        <span asp-validation-for="Player.Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Player.Surname"></label>
+                        <input asp-for="Player.Surname" class="form-control" />
+                        <span asp-validation-for="Player.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Player.Rating"></label>
+                        <input asp-for="Player.Rating" class="form-control" />
+                        <span asp-validation-for="Player.Rating" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Player.Status"></label>
+                        <input asp-for="Player.Status" class="form-control" />
+                        <span asp-validation-for="Player.Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-4">
+                        <label asp-for="Player.Team"></label>
+                        <select asp-for="Player.Team_id" asp-items="@Model.TDDTeam" class="form-control">
+                            <option selected>--Выбрать команду--</option>
+                        </select>
+                        <span asp-validation-for="Player.Team_id" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Player.Role"></label>
+                        <select asp-for="Player.Role_id" asp-items="@Model.TDDRole" class="form-control">
+                            <option selected>--Выберите роль--</option>
+                        </select>
+                        <span asp-validation-for="Player.Role_id" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="create" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<Game.Models.Map>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Список карт</h2>
+        </div>
+        @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+        {
+        <div class="col-6 text-right">
+            <a asp-controller="Map" asp-action="Create" class="btn btn-primary">Добавить карту</a>
+        </div>
+        }
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Название
+                </th>
+                
+                <th>
+                    Тип 
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obgect in Model)
+            {
+            <tr>
+                <td width="40%">@obgect.MapName</td>
+                <td width="40%">@obgect.Mode</td>
+                
+                @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                {
+                <td width="20%">
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Map" asp-action="Update" asp-route-Id="@obgect.Id" class="btn btn-primary mx-1">Изменить</a>
+                        <a asp-controller="Map" asp-action="Delete" asp-route-Id="@obgect.Id" class="btn btn-danger mx-1">Удалить</a>
+                    </div>
+                </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    {
+    <p>Ничего нет</p>
+    }
+
+</div>
